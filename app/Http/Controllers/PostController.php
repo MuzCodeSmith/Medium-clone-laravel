@@ -13,7 +13,8 @@ class PostController extends Controller
      */
     public function index()
     {
-       //
+        $categories = Category::get();
+        return view('dashboard',compact('categories'));
     }
 
     /**

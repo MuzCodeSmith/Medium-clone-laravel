@@ -35,7 +35,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'image'=>['required','image','mimes:jpeg,svg,png,gif,jpg','max:2048'],
+            'image'=>['required','image','mimes:jpeg,svg,png,gif,jpg','max:4800'],
             'title'=>'required',
             'content'=>'required',
             'category_id'=>['required','exists:categories,id'],

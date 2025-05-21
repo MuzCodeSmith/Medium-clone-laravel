@@ -13,9 +13,18 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
         @csrf
         @method('patch')
+
+        <!-- profile image -->
+
+        @if($user->image)
+        <div>
+            <img src="{{Storage::url($user->image)}}" alt="{{$user->image}}" class="rounded-full h-20 w-20">
+        </div>
+        @endif
+
 
         <!-- Avatar -->
         <div class="mt-4">

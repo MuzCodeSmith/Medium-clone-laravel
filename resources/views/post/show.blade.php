@@ -5,14 +5,10 @@
                 <h1 class="text-5xl mb-4">{{$post->title}}</h1>
                 <!-- avatar -->
                 <div class="flex gap-4">
-                    @if($post->user->imageUrl())
-                    <img src="{{Storage::url($post->user->image)}}" class="h-12 w-12 rounded-full" alt="{{$post->title}}">
-                    @else
-                    <img src="https://img.freepik.com/premium-vector/user-profile-icon-vector-image-can-be-used-gaming-ecommerce_120816-406884.jpg?uid=R20122910&ga=GA1.1.1329374159.1713979181&semt=ais_hybrid&w=740" class="h-12 w-12 rounded-full" alt="{{$post->title}}">
-                    @endif
+                   <x-user-avatar :user="$post->user"></x-user-avatar>
                     <div>
                         <div class="flex gap-2">
-                            <h3>{{$post->user->name}}</h3>
+                            <a href="{{route('profile.show',$post->user)}}" class="hover:underline" >{{$post->user->name}}</a>
                             &middot;
                             <a href="#" class="text-emerald-500">Follow</a>
                         </div>

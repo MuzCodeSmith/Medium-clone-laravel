@@ -23,6 +23,10 @@
         <div>
             <img src="{{Storage::url($user->image)}}" alt="{{$user->image}}" class="rounded-full h-20 w-20">
         </div>
+        @else
+        <div>
+            <img src="./profile.jpg" alt="{{$user->image}}" class="rounded-full h-20 w-20">
+        </div>
         @endif
 
 

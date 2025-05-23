@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class follower extends Model
 {
-    protected const UPDATED_AT =null;
+    public const UPDATED_AT =null;
 
     protected $fillable = ['user_id', 'follower_id'];
 

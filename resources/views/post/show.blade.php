@@ -4,18 +4,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-8">
                 <h1 class="text-5xl mb-4">{{$post->title}}</h1>
                 <!-- avatar -->
-                <div x-data="{
-                    following: @json($post->user->isFollowedBy(auth()->user())),
-                    follow() {
-                            axios.post(`/follow/{{$post->user->id}}`)
-                                .then(res => {
-                                    this.following = !this.following;
-                                    console.log(res.data);
-                                })
-                                .catch(err => console.log(err));
-                        }
-
-                }" class="flex gap-4">
+                <x-follow-ctr :user="$post->user" class="flex gap-4">
                    <x-user-avatar :user="$post->user"></x-user-avatar>
                     <div>
                         <div class="flex gap-2">
@@ -31,7 +20,8 @@
                             {{$post->created_at->format('M d, Y')}}
                         </div>
                     </div>
-                </div>
+                </x-follow-ctr>
+
                 <!-- avatar -->
 
                <!-- clap section -->

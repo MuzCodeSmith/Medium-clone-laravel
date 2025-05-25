@@ -1,5 +1,5 @@
 @props(['user'])
-<div x-data="{
+<div {{$attributes}} x-data="{
                         following: @json($user->isFollowedBy(auth()->user())),
                         followersCount:{{$user->followers->count()}},
                         follow() {

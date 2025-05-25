@@ -4,13 +4,26 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-8">
                 <h1 class="text-5xl mb-4">{{$post->title}}</h1>
                 <!-- avatar -->
-                <div class="flex gap-4">
+                <div x-data="{
+                    following: @json($post->user->isFollowedBy(auth()->user())),
+                    follow() {
+                            axios.post(`/follow/{{$post->user->id}}`)
+                                .then(res => {
+                                    this.following = !this.following;
+                                    console.log(res.data);
+                                })
+                                .catch(err => console.log(err));
+                        }
+
+                }" class="flex gap-4">
                    <x-user-avatar :user="$post->user"></x-user-avatar>
                     <div>
                         <div class="flex gap-2">
                             <a href="{{route('profile.show',$post->user)}}" class="hover:underline" >{{$post->user->name}}</a>
+                            @if(auth()->user() && auth()->user()->id !== $post->user->id)
                             &middot;
-                            <a href="#" class="text-emerald-500">Follow</a>
+                            <a href="#" class="text-emerald-500" @click="follow()" x-text="following ? 'Unfollow' : 'Follow'"></a>
+                            @endif
                         </div>
                         <div class="flex gap-2 text-sm text-gray-500">
                             {{$post->readTime()}} min read

@@ -15,23 +15,12 @@
                             @endforelse
                         </div>
                     </div>
-                    <div x-data="{
-                        following: @json($user->isFollowedBy(auth()->user())),
-                        followersCount:{{$user->followers->count()}},
-                        follow() {
-                            axios.post(`/follow/{{$user->id}}`)
-                                .then(res => {
-                                    this.following = !this.following;
-                                    this.followersCount = res.data.followers;
-                                    console.log(res.data);
-                                })
-                                .catch(err => console.log(err));
-                        }
-                    }" class="w-[320px] border-l px-8">
+                    <x-follow-ctr :user="$user">
                         <x-user-avatar :user="$user" size="w-24 h-24"></x-user-avatar>
                         <h3 class="mt-4">{{$user->name}}</h3>
-                        <p class="text-gray-500"> 
-                        <span x-text="followersCount" ></span> followers</p>
+                        <p class="text-gray-500">
+                            <span x-text="followersCount"></span> followers
+                        </p>
                         <p>
                             {{$user->bio}}
                         </p>
@@ -45,7 +34,7 @@
                             </button>
                         </div>
                         @endif
-                    </div>
+                    </x-follow-ctr>
                 </div>
             </div>
         </div>

@@ -29,7 +29,7 @@
                             <button
                                 class="rounded-full px-4 py-2"
                                 x-text="following ? 'Unfollow' : 'Follow'"
-                                :class="following ? 'bg-emerald-200 text-gray-600 hover:bg-emerald-300' : 'bg-emerald-600 text-white hover:bg-emerald-700'"
+                                :class="following ? 'bg-red-200 text-red-600 hover:bg-red-300' : 'bg-emerald-600 text-white hover:bg-emerald-700'"
                                 @click="follow()">
                             </button>
                         </div>

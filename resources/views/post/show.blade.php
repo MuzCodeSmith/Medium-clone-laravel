@@ -11,7 +11,7 @@
                             <a href="{{route('profile.show',$post->user)}}" class="hover:underline">{{$post->user->name}}</a>
                             @if(auth()->user() && auth()->user()->id !== $post->user->id)
                             &middot;
-                            <a href="#" class="text-emerald-500" @click="follow()" x-text="following ? 'Unfollow' : 'Follow'"></a>
+                            <a href="#" :class="following ? 'text-red-500' : 'text-emerald-500' " @click="follow()" x-text="following ? 'Unfollow' : 'Follow'"></a>
                             @endif
                         </div>
                         <div class="flex gap-2 text-sm text-gray-500">

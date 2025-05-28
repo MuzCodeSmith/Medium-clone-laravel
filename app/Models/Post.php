@@ -55,6 +55,9 @@ class Post extends Model implements HasMedia
         }
     }
 
+    public function formatedDate(){
+        return $this->created_at->format('M d, Y');
+    }
     public function category()
     {
         return $this->belongsTo(Category::class);

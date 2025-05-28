@@ -38,6 +38,10 @@
                                 {{ __('Profile') }}
                             </x-dropdown-link>
 
+                            <x-dropdown-link :href="route('myPosts')">
+                                {{ __('My Posts') }}
+                            </x-dropdown-link>
+
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -54,10 +58,10 @@
                 @endauth
 
                 @guest
-                    <div class="flex">
-                        <a href="{{route('register')}}" class="hidden sm:flex items-center px-3 py-2 border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150 " >Create An Account</a>
-                        <a href="{{route('login')}}" class="hidden sm:flex items-center px-3 py-2 border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150 ">Login</a>
-                    </div>
+                <div class="flex">
+                    <a href="{{route('register')}}" class="hidden sm:flex items-center px-3 py-2 border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150 ">Create An Account</a>
+                    <a href="{{route('login')}}" class="hidden sm:flex items-center px-3 py-2 border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150 ">Login</a>
+                </div>
                 @endguest
 
                 <!-- Hamburger -->
@@ -86,6 +90,10 @@
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
+
+                <x-dropdown-link :href="route('myPosts')">
+                    {{ __('My Posts') }}
+                </x-dropdown-link>
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

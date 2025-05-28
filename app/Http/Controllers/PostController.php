@@ -28,6 +28,16 @@ class PostController extends Controller
         $posts = $query->simplePaginate(5);
         return view('post.index',compact('posts'));
     }
+    
+    public function myPosts(){
+        $user = auth()->user();
+        $posts = Post::with('user')
+        ->with(['user','media'])
+        ->withCount('claps')
+        ->latest()
+        ->simplePaginate(5);
+        return view('post.index',compact('posts'));
+    }
 
     /**
      * Show the form for creating a new resource.

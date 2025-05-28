@@ -8,6 +8,8 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -18,8 +20,7 @@ class PostController extends Controller
     public function index()
     {
         $user = auth()->user();
-
-        $query = Post::latest();
+        $query = Post::with('user')->withCount('claps')->latest();
         if($user){
             $ids = $user->following()->pluck('users.id');
             $query->whereIn('user_id',$ids);

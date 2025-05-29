@@ -21,8 +21,22 @@
                         </div>
                     </div>
                 </x-follow-ctr>
-
                 <!-- avatar -->
+
+                @if($post->user_id == Auth::id())
+                <div class="mt-8 py-4 border-t border-b border-gray-200">
+                    <x-primary-button>
+                        Edit Post
+                    </x-primary-button>
+                    <form class="inline-block" action="{{route('post.destroy',$post)}}" method="post">
+                        @csrf
+                        @method('delete')
+                        <x-danger-button>
+                            Delete Post
+                        </x-danger-button>
+                    </form>
+                </div>
+                @endif
 
                 <!-- clap section -->
                 <div class="mt-8 p-4 border-t border-b flex gap-4">

@@ -9,8 +9,7 @@
 
             <div>by
                 <a href="{{route('profile.show',$post->user->username)}}"
-                class="text-gray-600 hover:underline"
-                >
+                    class="text-gray-600 hover:underline">
                     {{$post->user->username}}
                 </a>
                 at

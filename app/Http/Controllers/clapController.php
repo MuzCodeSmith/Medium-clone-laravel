@@ -8,18 +8,19 @@ use Illuminate\Http\Request;
 
 class clapController extends Controller
 {
-    public function clap(Post $post){
+    public function clap(Post $post)
+    {
         $isHasClapped = auth()->user()->hasClapped($post);
-        if($isHasClapped){
-            $post->claps()->where('user_id',auth()->id())->delete();
-        }else{
+        if ($isHasClapped) {
+            $post->claps()->where('user_id', auth()->id())->delete();
+        } else {
             $post->claps()->create([
-                'user_id'=>auth()->id(),
+                'user_id' => auth()->id(),
             ]);
         }
-       
+
         return response()->json([
-            'clapsCount'=> $post->claps()->count(),
+            'clapsCount' => $post->claps()->count(),
         ]);
     }
 }

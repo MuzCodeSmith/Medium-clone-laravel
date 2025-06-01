@@ -30,9 +30,9 @@ class ProfileController extends Controller
 
         $image = $data['image'] ?? null;
 
-        if($image){
-            $data['image'] = $image->store('avatars','public');
-        }else{
+        if ($image) {
+            $data['image'] = $image->store('avatars', 'public');
+        } else {
             unset($data['image']);
         }
 

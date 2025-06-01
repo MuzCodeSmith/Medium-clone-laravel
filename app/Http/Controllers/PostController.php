@@ -101,11 +101,11 @@ class PostController extends Controller
 
         $data['slug'] = Str::slug($data['title']);
         $image = $data['image'];
-        $filePath = $image->store('posts','public');
+        $filePath = $image->store('posts', 'public');
         $data['image'] = $filePath;
 
         $post->update($data);
-        
+
         return redirect()->route('myPosts');
     }
 

@@ -9,8 +9,9 @@ use Illuminate\Http\Request;
 
 class PublicProfileController extends Controller
 {
-    public function show(Request $request, User $user){
+    public function show(Request $request, User $user)
+    {
         $posts = $user->posts()->latest()->paginate();
-        return view('profile.view',['user'=>$user,'posts'=>$posts]);
+        return view('profile.view', ['user' => $user, 'posts' => $posts]);
     }
 }

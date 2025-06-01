@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 
 class FollowerController extends Controller
 {
-    public function followUnfollow(User $user){
+    public function followUnfollow(User $user)
+    {
         $user->followers()->toggle(auth()->user());
         return response()->json([
-            'followers'=>$user->followers()->count(),
+            'followers' => $user->followers()->count(),
         ]);
     }
 }
